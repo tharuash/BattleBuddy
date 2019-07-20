@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1000/xhtml">
+<head>
+  <!-- meta -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>BattleBuddy</title>
+  <!-- vendor css -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+  <link rel="stylesheet" href="plugins/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="plugins/animate/animate.min.css">
+  <!-- theme css -->
+  <link rel="stylesheet" href="css/theme.css">
+  <link rel="stylesheet" href="css/custom.css">
+</head>
+<body class="fixed-header">
+
+<!-- header -->
+<header id="header">
+  <div class="container">
+    <div class="navbar-backdrop">
+      <div class="navbar">
+        <div class="navbar-left">
+          <a class="navbar-toggle"><i class="fa fa-bars"></i></a>
+          <a th:href="@{/index}" class="logo"><img src="img/logo_new_2.png" alt="Gameforest - Game Theme HTML"></a>
+          <nav class="nav">
+            <ul>
+              <li>
+                <a href="#">Home</a>
+              </li>
+
+              <li>
+                <a href="#">Battle Buddy</a>
+              </li>
+
+              <li>
+                <a href="#">Feed</a>
+              </li>
+
+              <li><a href="#">Form</a></li>
+            </ul>
+          </nav>
+        </div>
+        <div class="nav navbar-right">
+          <div class="dropdown-menu dropdown-menu-right">
+            <a class="dropdown-item active" href="profile.html"><i class="fa fa-user"></i> Profile</a>
+            <a class="dropdown-item" href="profile.html"><i class="fa fa-cog"></i> Settings</a>
+            <a class="dropdown-item" href="index.html"><i class="fa fa-sign-out"></i> Logout</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="navbar-search">
+      <div class="container">
+        <form method="post">
+          <input type="text" class="form-control" placeholder="Search...">
+          <i class="fa fa-times close"></i>
+        </form>
+      </div>
+    </div>
+
+
+  </div>
+</header>
+
+  <!-- main -->
+  <section class="hero hero-game" style="background-image: url('img/hero/hero.jpg');">
+    <div class="overlay"></div>
+    <div class="container">
+      <div class="hero-block">
+        <div class="hero-left">
+          <h2 class="hero-title">Lorem ipsum dolor sit</h2>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab alias aperiam aut deserunt eligendi exercitationem iusto libero modi mollitia neque nostrum quam qui, rerum unde.</p>
+          <a class="btn btn-primary btn-lg btn-shadow btn-rounded btn-effect" href="game-post.html" role="button">More</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="p-t-30">
+    <div class="container">
+
+
+      <div class="row">
+        <div class="col-12 col-sm-6 col-md-4">
+          <div class="card card-lg">
+            <div class="card-img">
+              <a href="game-post.html">
+              <img src="img/game/game-1.jpg" class="card-img-top" alt="Assassin's Creed Syndicate">
+            </a>
+              <div class="badge badge-pc">pc</div>
+            </div>
+            <div class="card-block">
+              <h4 class="card-title">
+                <a href="#">Assassin's Creed Syndicate</a>
+              </h4>
+              <div class="card-meta">
+                <span>June 13, 2017</span>
+              </div>
+              <p class="card-text">Defeating the corrupt tyrants entrenched there will require not only strength, but leadership.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4">
+          <div class="card card-lg">
+            <div class="card-img">
+              <a href="#">
+              <img src="img/game/game-2.jpg" class="card-img-top" alt="Rise of the Tomb Raider">
+            </a>
+              <div class="badge badge-xbox-one">BattleBuddy In Need</div>
+            </div>
+            <div class="card-block">
+              <h4 class="card-title">
+                <a href="game-post.html">Rise of the Tomb Raider</a>
+              </h4>
+              <div class="card-meta">
+                <span>November 10, 2015</span>
+              </div>
+              <p class="card-text">Tomb Raider, Lara becomes more than a survivor as she embarks on her first great.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4">
+          <div class="card card-lg">
+            <div class="card-img">
+              <a href="#">
+              <img src="img/game/game-3.jpg" class="card-img-top" alt="The Witcher 3: Wild Hunt">
+            </a>
+              <div class="badge badge-ps4">ps4</div>
+            </div>
+            <div class="card-block">
+              <h4 class="card-title">
+                <a href="game-post.html">The Witcher 3: Wild Hunt</a>
+              </h4>
+              <div class="card-meta">
+                <span>March 15, 2017</span>
+              </div>
+              <p class="card-text">The world is in chaos. The air is thick with tension and the smoke of burnt villages.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+  <!-- /main -->
+
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8">
+        <!-- post -->
+        <div class="post post-md">
+          <div class="post-thumbnail">
+            <a href="blog-post-medium.html"><img src="https://i.ytimg.com/vi/wqLIeIKAMsU/mqdefault.jpg" alt="Days Gone Shows Depth In Stealth And Changing Surroundings"></a>
+          </div>
+          <div class="post-block">
+            <h2 class="post-title"><a href="blog-post-medium.html">Days Gone Changes Everything About Zombie Games</a></h2>
+            <div class="post-meta">
+              <span><i class="fa fa-clock-o"></i> July 29, 2017 by <a href="profile.html">Constantine</a></span>
+              <span><a href="blog-post-medium.html#comments"><i class="fa fa-comment-o"></i> 98 comments</a></span>
+            </div>
+            <p>There's more to Bend Studio's latest game than just zombies and homicidal marauders. Of the number of reasons to feel optimistic about Days Gonee.</p>
+          </div>
+        </div>
+
+        <!-- post -->
+        <div class="post post-md">
+          <div class="post-thumbnail">
+            <a href="blog-post-medium.html"><img src="https://i.ytimg.com/vi/9EzRBzdf--g/mqdefault.jpg" alt="Wolfenstein 2 Has A Submarine Hub That Lets You Travel"></a>
+          </div>
+          <div class="post-block">
+            <h2 class="post-title"><a href="blog-post-medium.html">Wolfenstein 2 Has A Submarine Hub That Lets You Travel</a></h2>
+            <div class="post-meta">
+              <span><i class="fa fa-clock-o"></i> July 18, 2017 by <a href="profile.html">Venom</a></span>
+              <span><a href="blog-post-medium.html#comments"><i class="fa fa-comment-o"></i> 9 comments</a></span>
+            </div>
+            <p>It doesn't take a treasure hunter to figure out that an Uncharted without Nathan Drake would be a narratively different experience.</p>
+          </div>
+        </div>
+
+        <!-- post -->
+        <div class="post post-md">
+          <div class="post-thumbnail">
+            <a href="blog-post-medium.html"><img src="https://i.ytimg.com/vi/orVd8a2eafw/mqdefault.jpg" alt="For Honor Adds New Maps And Characters Today With Season 2 DLC Launch"></a>
+          </div>
+          <div class="post-block">
+            <h2 class="post-title"><a href="blog-post-medium.html">For Honor Adds New Maps And Characters Today With Season 2 DLC Launch</a></h2>
+            <div class="post-meta">
+              <span><i class="fa fa-clock-o"></i> July 14, 2017 by <a href="profile.html">Lobo</a></span>
+              <span><a href="blog-post-medium.html#comments"><i class="fa fa-comment-o"></i> 13 comments</a></span>
+            </div>
+            <p>Check out new gameplay videos of the two new characters here; new maps are also debuting today for all players.</p>
+          </div>
+        </div>
+
+        <!-- post -->
+        <div class="post post-md">
+          <div class="post-thumbnail">
+            <a href="blog-post-medium.html"><img src="https://i.ytimg.com/vi/B6qY-P4eo1Q/mqdefault.jpg" alt="Mafia III Stones Unturned DLC Launch Trailer"></a>
+          </div>
+          <div class="post-block">
+            <h2 class="post-title"><a href="blog-post-medium.html">Mafia III Stones Unturned DLC Launch Trailer</a></h2>
+            <div class="post-meta">
+              <span><i class="fa fa-clock-o"></i> July 11, 2017 by <a href="profile.html">YAKUZI</a></span>
+              <span><a href="blog-post-medium.html#comments"><i class="fa fa-comment-o"></i> 34 comments</a></span>
+            </div>
+            <p>Stones Unturned, the second of three DLC releases, is now available individually or collectively as part of the Season Pass.</p>
+          </div>
+        </div>
+
+        <div class="pagination-results m-t-30">
+          <span>Showing 10 to 20 of 48 results</span>
+          <nav aria-label="Page navigation">
+            <ul class="pagination">
+              <li class="page-item disabled"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true"><i class="fa fa-angle-left"></i></span></a></li>
+              <li class="page-item active"><a class="page-link" href="#">1</a></li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item"><a class="page-link" href="#">4</a></li>
+              <li class="page-item"><a class="page-link" href="#">5</a></li>
+              <li class="separate"><span>...</span></li>
+              <li class="page-item"><a class="page-link" href="#">25</a></li>
+              <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true"><i class="fa fa-angle-right"></i></span></a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+
+      <!-- sidebar -->
+      <div class="col-lg-4">
+        <div class="sidebar">
+
+
+          <!-- widget post -->
+          <div class="widget widget-post">
+            <h5 class="widget-title">Popular on Gameforest</h5>
+            <a href="blog-post-medium.html"><img src="img/blog/blog-widget-popular-1.jpg" alt=""></a>
+            <!--<h4><a href="blog-post-medium.html">Red Dead Redemption Being Modded Into GTA5 Multiplayer</a></h4>-->
+            <!--<span><i class="fa fa-clock-o"></i> June 16, 2017</span>-->
+            <!--<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vel neque sed anter.</p>-->
+
+          </div>
+
+          <!-- widget post -->
+          <div class="widget widget-post">
+            <h5 class="widget-title">Popular on Gameforest</h5>
+            <a href="blog-post-medium.html"><img src="img/blog/blog-widget-popular-1.jpg" alt=""></a>
+            <!--<h4><a href="blog-post-medium.html">Red Dead Redemption Being Modded Into GTA5 Multiplayer</a></h4>-->
+            <!--<span><i class="fa fa-clock-o"></i> June 16, 2017</span>-->
+            <!--<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vel neque sed anter.</p>-->
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- footer -->
+<footer id="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-md-5">
+        <h4 class="footer-title">About Battle Buddy</h4>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A adipisci blanditiis deleniti deserunt
+          error, exercitationem incidunt iusto libero modi molestiae repellendus, similique sunt suscipit
+          temporibus,
+          ut vero vitae voluptatem voluptates!
+        </p>
+        <p>Ab, beatae dolores expedita in minus necessitatibus.
+          Aliquam debitis doloribus, earum esse est ex illum impedit modi nam natus odio placeat quae quos
+          repellat tenetur unde veritatis voluptate voluptates voluptatibus?
+        </p>
+      </div>
+      <div class="col-sm-12 col-md-3">
+        <h4 class="footer-title">Platform</h4>
+        <div class="row">
+          <div class="col">
+            <ul>
+              <li><a href="#">SUPPORT</a></li>
+              <li><a href="#">JOBS</a></li>
+              <li><a href="#">IMPRESSUM</a></li>
+
+            </ul>
+          </div>
+          <div class="col">
+            <ul>
+              <li><a href="#">DONATE</a></li>
+              <li><a href="#">PRIVACY POLICY</a></li>
+              <li><a href="#">TERMS OF SERVICE</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-4">
+        <h4 class="footer-title">Subscribe</h4>
+        <p>Subscribe to our newsletter and get notification when new games are available.</p>
+        <div class="input-group m-t-25">
+          <input type="text" class="form-control" placeholder="Email">
+          <span class="input-group-btn">
+            <button class="btn btn-danger" type="button">Subscribe</button>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-social">
+        <a href="https://facebook.com/yakuthemes" target="_blank" data-toggle="tooltip" title="facebook"><i
+                class="fa fa-facebook"></i></a>
+        <a href="https://twitter.com/yakuthemes" target="_blank" data-toggle="tooltip" title="twitter"><i
+                class="fa fa-twitter"></i></a>
+        <a href="https://steamcommunity.com/id/yakuzi" target="_blank" data-toggle="tooltip" title="steam"><i
+                class="fa fa-steam"></i></a>
+        <a href="https://www.twitch.tv/" target="_blank" data-toggle="tooltip" title="twitch"><i
+                class="fa fa-twitch"></i></a>
+        <a href="https://www.youtube.com/user/1YAKUZI" target="_blank" data-toggle="tooltip" title="youtube"><i
+                class="fa fa-youtube"></i></a>
+      </div>
+      <p>Copyright &copy; 2017 <a
+              href="#" target="_blank">BattleBuddy</a>.
+        All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+<!-- /footer -->
+
+  <!-- vendor js -->
+  <script src="plugins/jquery/jquery-3.2.1.min.js"></script>
+  <script src="plugins/popper/popper.min.js"></script>
+  <script src="plugins/bootstrap/js/bootstrap.min.js"></script>
+
+  <!-- plugins js -->
+  <script src="plugins/easypiechart/jquery.easing.1.3.js"></script>
+  <script src="plugins/easypiechart/jquery.easypiechart.min.js"></script>
+  <script>
+    (function($) {
+      "use strict";
+      // easyPieChart
+      $('.chart').easyPieChart({
+        barColor: '#5eb404',
+        trackColor: '#e3e3e3',
+        easing: 'easeOutBounce',
+        onStep: function(from, to, percent) {
+          $(this.el).find('span').text(Math.round(percent));
+        }
+      });
+      $('.search-game, .navbar-search .form-control').keyup(function() {
+        var search = $(this).val().toLowerCase();
+        $.each($('.card-title'), function() {
+          if ($(this).text().toLowerCase().indexOf(search) === -1) {
+            $(this).parent().parent().parent().hide();
+          } else {
+            $(this).parent().parent().parent().show();
+          }
+        });
+      });
+    })(jQuery);
+  </script>
+
+  <!-- theme js -->
+  <script src="js/theme.min.js"></script>
+</body>
+</html>
