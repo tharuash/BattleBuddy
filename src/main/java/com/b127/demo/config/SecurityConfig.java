@@ -1,63 +1,85 @@
 package com.b127.demo.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
-import com.b127.demo.service.custom.impl.UserSecurityServiceImpl;
-import com.b127.demo.utils.SecurityUtil;
+import com.b127.demo.service.custom.UserService;
 
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true)
-public class SecurityConfig extends WebSecurityConfigurerAdapter{
-	
+public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
 	@Autowired
-	UserSecurityServiceImpl userSecurityServiceImpl;
-	
-	private static final String[] PUBLIC_MATCHERS = {
-			"/css/**",
-			"/js/**",
-			"/image/**",
-			"/plugins/**",
+	private CustomAccessDeniedHandler customAccessDeniedHandler;
+
+	@Autowired
+	private UserService userService;
+
+	private static String[] PUBLIC_MATHCERS = { 
 			"/",
 			"/login",
-			"/index",
+			"/toLogin",
+			"/access-denied",
+			"/toRegister",
 			"/newUser",
-			"/register",
-			"/profile"
-			};
-	
+			"/profile",
+			"/registration",
+			"/index",
+			"/games",
+			"/js/**",
+			"/css/**",
+			"/img/**",
+			"/plugins/**" };
+
+	@Bean
+	public BCryptPasswordEncoder passwordEncoder() {
+		return new BCryptPasswordEncoder();
+	}
+
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		
-	http
-		.authorizeRequests()
-		.antMatchers(PUBLIC_MATCHERS)
-		.permitAll().anyRequest().authenticated();
+		http
+			.authorizeRequests()
+			.antMatchers(PUBLIC_MATHCERS)
+			.permitAll()
+			.and()
+		.formLogin()
+			.loginPage("/login")
+			.loginProcessingUrl("/login")
+			.usernameParameter("username")
+			.passwordParameter("password")
+			.successForwardUrl("/loginPost")
+			.failureUrl("/login?error")
+			.permitAll()
+			.and()
+		.logout()
+			.permitAll()
+			.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+			.logoutSuccessUrl("/login?logout")
+			.and()
+		.exceptionHandling()
+			.accessDeniedHandler(customAccessDeniedHandler);
 
-	http
-		.csrf().disable().cors().disable()
-		.formLogin().failureUrl("/login?error")
-		.loginPage("/login").defaultSuccessUrl("/profile")
-		.and()
-		.logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-		.logoutSuccessUrl("/?logout").deleteCookies("remember-me").permitAll()
-		.and()
-		.rememberMe();
-		
 	}
-	
-	@Autowired
-	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-		auth.userDetailsService(userSecurityServiceImpl).passwordEncoder(SecurityUtil.passwordEncoder());
-	}
-	
-	
 
+	@Override
+	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+		auth.authenticationProvider(authenticationProvider());
+	}
+
+	@Bean
+	public DaoAuthenticationProvider authenticationProvider() {
+		DaoAuthenticationProvider auth = new DaoAuthenticationProvider();
+		auth.setUserDetailsService(userService);
+		auth.setPasswordEncoder(passwordEncoder());
+		return auth;
+	}
 }

@@ -1,21 +1,24 @@
 package com.b127.demo.controller;
 
 
-import java.security.Principal;
+
+import javax.servlet.http.HttpSession;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-
+import com.b127.demo.entity.SecuredUser;
 import com.b127.demo.entity.User;
-import com.b127.demo.service.custom.UserService;
-import com.b127.demo.utils.SecurityUtil;
 
+import com.b127.demo.service.custom.UserService;
 
 
 
@@ -25,75 +28,72 @@ public class HomeController {
 	@Autowired
 	UserService userService;
 
+	@RequestMapping("/access-denied")
+	public String accessDenied() {
+		return "games";
+	}
+
 	@RequestMapping("/")
 	public String home() {
 		return "games";
 	}
-	
-	@RequestMapping("/index")
-	public String index() {
-		System.out.println("Inside index get");
+
+	@RequestMapping("/toLogin")
+	public String toLogin() {
 		return "index";
 	}
 
-	@RequestMapping("/register")
-	public String goToReg() {
+	@RequestMapping("/toRegister")
+	public String toRegistration() {
 		return "register";
+	}
+	
+	@ModelAttribute("user")
+	public User user() {
+		return new User();
 	}
 
 	@RequestMapping("/login")
-	public String login() {
-		System.out.println("Inside login");
-		//model.addAttribute("classActiveLogin", true);
-		return "index";
+	public String login(Model model) {
+		System.out.println("inside /login");
+		return "profile";
 	}
 	
-	@RequestMapping("/profile")
-	public String profile(Model model, Principal principal) {
-		System.out.println("Inside profile");
-		User user = userService.findByUsername(principal.getName());
-		System.out.println(user.getName());
-		model.addAttribute("user", user);
-		
+	@RequestMapping("profile")
+	public String profile(Model model) {
 		return "profile";
 	}
 
 	@RequestMapping(value = "/newUser", method = RequestMethod.POST)
-	public String registerNewUser(@ModelAttribute("email") String userEmail,
-			@ModelAttribute("username") String username, Model model) {
-
-		model.addAttribute("classActiveNewAccount", true);
-		model.addAttribute("email", userEmail);
-		model.addAttribute("username", username);
+	public String registerNewUser(@ModelAttribute("user") User user, BindingResult result ,Model model) {
 		
-		//System.out.print(userEmail+" "+username);
-
-		if (userService.findByUsername(username) != null) {
-			model.addAttribute("usernameExists", true);
-
-			return "index";
-		}
-
-		if (userService.findByEmail(userEmail) != null) {
-			model.addAttribute("emailExists", true);
-
-			return "index";
-		}
-
-		User user = new User();
-		user.setUserName(username);
-		user.setEmail(userEmail);
-
-		String password = SecurityUtil.randomPassword();
+		User existing = userService.findByEmail(user.getEmail());
 		
-		String encryptedPassword = SecurityUtil.passwordEncoder().encode(password);
-		user.setPassword(encryptedPassword);
+		if(existing != null) {
+			result.rejectValue("email", null, "Email already registered");
+		}
+		
+		if(result.hasErrors()) {
+			return "register";
+		}
+		
 		userService.insert(user);
 
 		return "profile";
 
+	}
+	
+	@RequestMapping(value="/loginPost", method = RequestMethod.POST)
+	public String loginPost(Model model, HttpSession httpSession) {
 		
-
+		UsernamePasswordAuthenticationToken authentication = (UsernamePasswordAuthenticationToken) SecurityContextHolder.getContext().getAuthentication();
+		User loggedUser = ((SecuredUser) authentication.getPrincipal()).getUserDetails();
+		
+		model.addAttribute("loggedUserId", loggedUser.getId());
+		model.addAttribute("loggedUsername", loggedUser.getUsername());
+		httpSession.setAttribute("userId", loggedUser.getId());
+		
+		return "profile";
 	}
 
 }
