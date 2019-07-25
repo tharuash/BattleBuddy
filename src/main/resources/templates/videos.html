@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1000/xhtml">
+<head>
+    <!-- meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>BattleBuddy</title>
+    <!-- vendor css -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+    <link rel="stylesheet" href="plugins/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="plugins/animate/animate.min.css">
+    <!-- theme css -->
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="css/custom.css">
+</head>
+<body class="fixed-header">
+
+<!-- header -->
+<header id="header">
+    <div class="container">
+        <div class="navbar-backdrop">
+            <div class="navbar">
+                <div class="navbar-left">
+                    <a class="navbar-toggle"><i class="fa fa-bars"></i></a>
+                    <a href="index.html" class="logo"><img src="img/logo.png" alt="Gameforest - Game Theme HTML"></a>
+                    <nav class="nav">
+                        <ul>
+                            <li class="">
+                                <a href="games.html">Home</a>
+                            </li>
+
+                            <li class="mega-menu mega-games">
+                                <a href="home-blog.html">Battle Buddy</a>
+                            </li>
+
+                            <li class="">
+                                <a href="videos.html">Feed</a>
+                            </li>
+
+                            <li><a href="forum-post.html">Form</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="nav navbar-right">
+                    <ul>
+                        <!--Hide-->
+                        <li class="dropdown dropdown-profile">
+                            <a href="index.html" data-toggle="dropdown" aria-expanded="false"><img
+                                    src="img/user/avatar-sm.jpg" alt=""> <span>Nathan Drake</span></a>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <a class="dropdown-item active" href="profile.html"><i class="fa fa-user"></i> Profile</a>
+                                <a class="dropdown-item" href="profile.html"><i class="fa fa-cog"></i> Settings</a>
+                                <a class="dropdown-item" href="index.html"><i class="fa fa-sign-out"></i> Logout</a>
+                            </div>
+                        </li>
+
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="navbar-search">
+            <div class="container">
+                <form method="post">
+                    <input type="text" class="form-control" placeholder="Search...">
+                    <i class="fa fa-times close"></i>
+                </form>
+            </div>
+        </div>
+
+
+    </div>
+</header>
+<!-- /header -->
+
+
+<section class="toolbar">
+    <div class="container">
+        <h5><i class="fa fa-film"></i> Recent Videos <span>(123)</span></h5>
+        <form method="post">
+            <div class="form-group input-icon-right">
+                <i class="fa fa-search"></i>
+                <input type="text" class="form-control search-video form-control-secondary" id="search"
+                       placeholder="Search Video...">
+            </div>
+        </form>
+        <a class="btn btn-danger btn-shadow float-right hidden-sm-down" href="#" role="button" data-target="#modal-danger" data-toggle="modal">Upload Video <i class="fa fa-cloud-upload"></i></a>
+        <!-- Button trigger modal -->
+
+        <div class="modal fade modal-top modal-danger" id="modal-danger">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="ModalLabel">Upload Your Clip </h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    </div>
+
+                    <div class="modal-body">
+
+                        <div class="p-r-30">
+                            <form th:action="@{/add-feed}" method="post">
+                                <div class="form-group row">
+                                    <label for="example-text-input" class="col-sm-2 col-form-label">Title</label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" type="text" name="title" id="example-text-input">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="example-search-input" class="col-sm-2 col-form-label">Description</label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" type="text" name="text" id="example-search-input">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="example-email-input" class="col-sm-2 col-form-label">URL</label>
+                                    <div class="col-sm-10">
+                                        <input class="form-control" type="text" name="link" id="example-email-input">
+                                    </div>
+                                </div>
+                                
+                                <button type="submit" class="btn btn-danger">Save changes</button>
+                                
+                            </form>
+                        </div>
+
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <div class="toolbar-custom">
+            <a class="btn btn-default btn-icon m-r-10 float-left hidden-sm-down" href="#" data-toggle="tooltip"
+               title="refresh" data-placement="bottom" role="button"><i class="fa fa-refresh"></i></a>
+
+            <div class="dropdown float-left">
+                <button class="btn btn-default" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Category<i class="fa fa-caret-down"></i></button>
+                <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 39px, 0px); top: 0px; left: 0px; will-change: transform;">
+                    <a class="dropdown-item active" href="#">Best Voted</a>
+                    <a class="dropdown-item" href="#">New</a>
+                    <a class="dropdown-item" href="#">Top Plays</a>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="row row-5">
+            <div class="col-12 col-sm-6 col-md-3">
+                <div class="card card-video" th:each="feed :${feeds}">
+                    <div class="card-img">
+                        <a href="#">
+                            <img src="https://i1.ytimg.com/vi/GaERL8Nrl9k/mqdefault.jpg"
+                                 alt="Tom Clancy's Ghost Recon: Wildlands">
+                        </a>
+                        <div class="card-meta">
+                            <span>4:32</span>
+                        </div>
+                    </div>
+                    <div class="card-block">
+                        <h4 class="card-title"><a href="#" th:text="${feed.title}"></a></h4>
+                        <div class="card-meta">
+                            <span><i class="fa fa-clock-o"></i> 2 hours ago</span>
+                            <span>423 views</span>
+                        </div>
+                        <p th:text="${feed.text}"></p>
+                    </div>
+                </div>
+            </div>
+            
+            
+            
+        </div>
+
+        <div class="pagination-results m-t-10">
+            <span>Showing 10 to 20 of 48 videos</span>
+            <nav aria-label="Page navigation">
+                <ul class="pagination">
+                    <li class="page-item disabled"><a class="page-link" href="#" aria-label="Previous"><span
+                            aria-hidden="true"><i class="fa fa-angle-left"></i></span></a></li>
+                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#">4</a></li>
+                    <li class="page-item"><a class="page-link" href="#">5</a></li>
+                    <li class="separate"><span>...</span></li>
+                    <li class="page-item"><a class="page-link" href="#">25</a></li>
+                    <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true"><i
+                            class="fa fa-angle-right"></i></span></a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</section>
+<!-- /main -->
+
+<!-- footer -->
+<footer id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-5">
+                <h4 class="footer-title">About Battle Buddy</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A adipisci blanditiis deleniti deserunt
+                    error, exercitationem incidunt iusto libero modi molestiae repellendus, similique sunt suscipit
+                    temporibus,
+                    ut vero vitae voluptatem voluptates!
+                </p>
+                <p>Ab, beatae dolores expedita in minus necessitatibus.
+                    Aliquam debitis doloribus, earum esse est ex illum impedit modi nam natus odio placeat quae quos
+                    repellat tenetur unde veritatis voluptate voluptates voluptatibus?
+                </p>
+            </div>
+            <div class="col-sm-12 col-md-3">
+                <h4 class="footer-title">Platform</h4>
+                <div class="row">
+                    <div class="col">
+                        <ul>
+                            <li><a href="#">SUPPORT</a></li>
+                            <li><a href="#">JOBS</a></li>
+                            <li><a href="#">IMPRESSUM</a></li>
+
+                        </ul>
+                    </div>
+                    <div class="col">
+                        <ul>
+                            <li><a href="#">DONATE</a></li>
+                            <li><a href="#">PRIVACY POLICY</a></li>
+                            <li><a href="#">TERMS OF SERVICE</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-4">
+                <h4 class="footer-title">Subscribe</h4>
+                <p>Subscribe to our newsletter and get notification when new games are available.</p>
+                <div class="input-group m-t-25">
+                    <input type="text" class="form-control" placeholder="Email">
+                    <span class="input-group-btn">
+            <button class="btn btn-danger" type="button">Subscribe</button>
+          </span>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-social">
+                <a href="https://facebook.com/yakuthemes" target="_blank" data-toggle="tooltip" title="facebook"><i
+                        class="fa fa-facebook"></i></a>
+                <a href="https://twitter.com/yakuthemes" target="_blank" data-toggle="tooltip" title="twitter"><i
+                        class="fa fa-twitter"></i></a>
+                <a href="https://steamcommunity.com/id/yakuzi" target="_blank" data-toggle="tooltip" title="steam"><i
+                        class="fa fa-steam"></i></a>
+                <a href="https://www.twitch.tv/" target="_blank" data-toggle="tooltip" title="twitch"><i
+                        class="fa fa-twitch"></i></a>
+                <a href="https://www.youtube.com/user/1YAKUZI" target="_blank" data-toggle="tooltip" title="youtube"><i
+                        class="fa fa-youtube"></i></a>
+            </div>
+            <p>Copyright &copy; 2017 <a
+                    href="#" target="_blank">BattleBuddy</a>.
+                All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+<!-- /footer -->
+
+<!-- vendor js -->
+<script src="plugins/jquery/jquery-3.2.1.min.js"></script>
+<script src="plugins/popper/popper.min.js"></script>
+<script src="plugins/bootstrap/js/bootstrap.min.js"></script>
+
+<!-- plugins js -->
+<script>
+    (function ($) {
+        "use strict";
+        $('.search-video, .navbar-search .form-control').keyup(function () {
+            var search = $(this).val().toLowerCase();
+            $.each($('.card-title'), function () {
+                if ($(this).text().toLowerCase().indexOf(search) === -1) {
+                    $(this).parent().parent().parent().hide();
+                } else {
+                    $(this).parent().parent().parent().show();
+                }
+            });
+        });
+    })(jQuery);
+</script>
+
+<!-- theme js -->
+<script src="js/theme.min.js"></script>
+</body>
+</html>

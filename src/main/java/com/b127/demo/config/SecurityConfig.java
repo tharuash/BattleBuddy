@@ -25,6 +25,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	private static String[] PUBLIC_MATHCERS = { 
 			"/",
+			"/css/**",
+			"/js/**",
+			"/img/**",
+			"/plugins/**",
 			"/login",
 			"/toLogin",
 			"/access-denied",
@@ -34,10 +38,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			"/registration",
 			"/index",
 			"/games",
-			"/js/**",
-			"/css/**",
-			"/img/**",
-			"/plugins/**" };
+			"/battlebuddy/**",
+			"/feed/**"};
 
 	@Bean
 	public BCryptPasswordEncoder passwordEncoder() {
@@ -81,4 +83,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		auth.setPasswordEncoder(passwordEncoder());
 		return auth;
 	}
+	
+	
 }

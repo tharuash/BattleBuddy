@@ -8,8 +8,8 @@ public class BattleBuddy {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "battel_buddy_id")
-    private int battleBuddyId;
+    @Column
+    private int id;
 
     @ManyToOne
     @JoinColumn(name = "user_id",referencedColumnName = "id")
@@ -47,7 +47,7 @@ public class BattleBuddy {
     }
 
     public BattleBuddy(int battleBuddyId, User user, String console, String region, String gameName, int voiceChat, String language, String text) {
-        this.battleBuddyId=battleBuddyId;
+        this.id=battleBuddyId;
         this.user = user;
         this.console = console;
         this.region = region;
@@ -58,11 +58,11 @@ public class BattleBuddy {
     }
 
     public int getBattleBuddyId() {
-        return battleBuddyId;
+        return id;
     }
 
     public void setBattleBuddyId(int battleBuddyId) {
-        this.battleBuddyId = battleBuddyId;
+        this.id = battleBuddyId;
     }
 
     public User getUser() {

@@ -31,6 +31,9 @@ public class Feed {
     
     @Column(name = "created_time")
     private Date createdTime;
+    
+    @Column(name = "link")
+    private String link;
 
     public Feed() {
     }
@@ -106,5 +109,13 @@ public class Feed {
     
     public Date getCreatedTime() {
 		return createdTime;
+	}
+    
+    public void setLink(String link) {
+		this.link = link;
+	}
+    
+    public String getLink() {
+		return link;
 	}
 }

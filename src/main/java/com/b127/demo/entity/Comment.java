@@ -19,8 +19,8 @@ public class Comment {
     private User user;
     
     @ManyToOne
-    @JoinColumn(name = "feed_id",referencedColumnName = "feed_id")
-    private Feed feed;
+    @JoinColumn(name = "post_id",referencedColumnName = "post_id")
+    private Post post;
 
     @Column(name = "body")
     private String body;
@@ -34,22 +34,15 @@ public class Comment {
     public Comment() {
     }
 
-    public Comment(User userId, Feed feedId, String body, int likes, Date createdTime) {
+    public Comment(User userId, Post postId, String body, int likes, Date createdTime) {
         this.user = userId;
-        this.feed = feedId;
+        this.post = postId;
         this.body = body;
         this.likes = likes;
         this.createdTime = createdTime;
     }
 
-    public Comment(int commentId, User user, Feed feedId, String body, int likes, Date createdTime) {
-        this.commentId=commentId;
-        this.user = user;
-        this.feed = feedId;
-        this.body = body;
-        this.likes = likes;
-        this.createdTime = createdTime;
-    }
+   
 
     public int getCommentId() {
         return commentId;
@@ -67,12 +60,12 @@ public class Comment {
         this.user = user;
     }
 
-    public Feed getFeedId() {
-        return feed;
+    public Post getPostId() {
+        return post;
     }
 
-    public void setFeed(Feed feed) {
-        this.feed = feed;
+    public void setPost(Post post) {
+        this.post = post;
     }
 
     public String getBody() {
