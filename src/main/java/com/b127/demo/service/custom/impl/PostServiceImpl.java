@@ -46,7 +46,7 @@ public class PostServiceImpl implements PostService {
 		localPost.setId(post.getId());
 		localPost.setTitle(post.getTitle());
 		localPost.setText(post.getText());
-		localPost.setComment(post.getComment());
+		localPost.setForum(post.getForum());
 		localPost.setUser(post.getUser());
 		localPost.setLikes(post.getLikes());
 		

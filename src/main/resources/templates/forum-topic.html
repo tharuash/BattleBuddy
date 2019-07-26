@@ -17,6 +17,7 @@
 </head>
 <body class="fixed-header">
 
+
 <!-- header -->
 <header id="header">
     <div class="container">
@@ -24,7 +25,7 @@
             <div class="navbar">
                 <div class="navbar-left">
                     <a class="navbar-toggle"><i class="fa fa-bars"></i></a>
-                    <a th:href="@{/index}" class="logo"><img src="img/logo_new_2.png" alt="Gameforest - Game Theme HTML"></a>
+                    <a href="index.html" class="logo"><img src="img/logo.png" alt="Gameforest - Game Theme HTML"></a>
                     <nav class="nav">
                         <ul>
                             <li class="">
@@ -32,25 +33,33 @@
                             </li>
 
                             <li class="mega-menu mega-games">
-                                <a th:href="@{/battlebuddy}">Battle Buddy</a>
+                                <a href="home-blog.html">Battle Buddy</a>
                             </li>
 
                             <li class="">
-                                <a th:href="@{/feed}">Feed</a>
+                                <a href="videos.html">Feed</a>
                             </li>
 
-                            <li><a th:href="@{/forum}">Forum</a></li>
-                            
-                           
+                            <li><a href="forum-post.html">Form</a></li>
                         </ul>
                     </nav>
                 </div>
                 <div class="nav navbar-right">
-                    <div class="dropdown-menu dropdown-menu-right">
-                        <a class="dropdown-item active" href="profile.html"><i class="fa fa-user"></i> Profile</a>
-                        <a class="dropdown-item" href="profile.html"><i class="fa fa-cog"></i> Settings</a>
-                        <a class="dropdown-item" th:href="@{/logout}"><i class="fa fa-sign-out"></i> Logout</a>
-                    </div>
+                    <ul>
+                        <!--Hide-->
+                        <li class="dropdown dropdown-profile">
+                            <a href="index.html" data-toggle="dropdown" aria-expanded="false"><img
+                                    src="img/user/avatar-sm.jpg" alt=""> <span>Nathan Drake</span></a>
+                            <div class="dropdown-menu dropdown-menu-right">
+                                <a class="dropdown-item active" href="profile.html"><i class="fa fa-user"></i> Profile</a>
+                                <a class="dropdown-item" href="profile.html"><i class="fa fa-cog"></i> Settings</a>
+                                <a class="dropdown-item" href="index.html"><i class="fa fa-sign-out"></i> Logout</a>
+                            </div>
+                        </li>
+                        <li><a data-toggle="search"><i class="fa fa-search"></i></a></li>
+
+
+                    </ul>
                 </div>
             </div>
         </div>
@@ -68,90 +77,79 @@
 
     </div>
 </header>
+<!-- /header -->
 
 <!-- main -->
-<section class="hero hero-profile"
-         style="background-image: url('img/bg/wp2548263.jpg');">
-    <div class="overlay" style="opacity: 0.4;"></div>
+<section class="breadcrumbs">
     <div class="container">
-        <div class="hero-block">
-            <h5><span th:text="${loggedUsername}"></span></h5>
-        </div>
+        <ol class="breadcrumb">
+            <li><a href="/">Home</a></li>
+            <li><a href="forums.html">Forums</a></li>
+           
+        </ol>
     </div>
 </section>
 
-<section class="toolbar toolbar-profile" data-fixed="true">
+<section class="p-t-40">
     <div class="container">
-        <div class="profile-avatar">
-            <a href="#"><img src="img/user/avatar.jpg" alt=""></a>
-            <div class="sticky">
-                <a href="#"><img src="img/user/avatar-sm.jpg" alt=""></a>
-                <div class="profile-info">
-                    <h5 th:text="${loggedUsername}"></h5>
-                    <span th:text="${loggedUsername}">@</span>
-                </div>
-            </div>
+        <div class="forum-headline forum-panel">
+            <h5 class="float-left">Topic Title <span>Short topic description goes here.</span></h5>
+            <a class="btn btn-danger btn-shadow float-right" href="forum-create.html" role="button">New topic <i
+                    class="fa fa-plus"></i></a>
         </div>
-
-        <ul class="toolbar-nav hidden-md-down">
-            <li class="active"><a href="#">Change Email Address</a></li>
-            <li><a href="#">Change Account Details</a></li>
-            <li><a href="#">Your Game</a></li>
-            <li><a href="#">Delete my Account</a></li>
-        </ul>
-    </div>
-</section>
-
-<section class="p-y-30">
-    <div class="container">
-        <div class="row" style="margin-top: 50px;">
-
-            <div class="col-lg-12">
-                <!-- post -->
-                <div class="post post-card post-profile" th:each="feed :${feeds}">
-                    <div class="post-header">
+        <div class="forum">
+            <div class="forum-head">
+                <div></div>
+                <div style="width: 65%">Topic</div>
+                <div style="width: 7%">Replies</div>
+                <div style="width: 7%">Views</div>
+                <div style="width: 20%">Most Recent</div>
+            </div>
+            <div class="forum-group" th:each="forum : ${forums}">
+                <div class="forum-row" >
+                    <div class="forum-icon">
+                        <span class="badge badge-warning"><i class="fa fa-thumb-tack"></i></span>
+                        <i class="fa fa-comments"></i>
+                    </div>
+                    <div class="forum-title">
+                        <h4><a th:text="${forum.title}">Can't remember the title of a game</a></h4>
+                        <p>by Venom on June 2, 2017</p>
+                    </div>
+                    <div class="forum-thread" >57</div>
+                    <div class="forum-thread" th:text="${forum.views}">405</div>
+                    <div class="forum-latest">
+                        <a href="profile.html"><img src="img/user/user-2.jpg" alt=""></a>
                         <div>
-                            <a href="profile.html">
-                                <img src="img/user/avatar-sm.jpg" alt="">
-                            </a>
-                        </div>
-                        <div>
-                            <h2 class="post-title">
-                                <a href="profile.html" th:value="${loggedUsername}"></a>
-                            </h2>
-                            <div class="post-meta">
-                                <span th:text="${feed.createdTime}"><i class="fa fa-clock-o"></i></span>
-                                <span><a href="#"><i class="fa fa-comment-o"></i>50 comments</a></span>
-                                <span th:text="${feed.likes}"><a href="#"><i class="fa fa-heart-o"></i> likes</a></span>
-                            </div>
-                            <div class="dropdown float-right">
-                                <a href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i
-                                        class="fa fa-chevron-down"></i></a>
-                                <div class="dropdown-menu dropdown-menu-right">
-                                    <a class="dropdown-item" href="#">Moderate</a>
-                                    <a class="dropdown-item" href="#">Embed</a>
-                                    <a class="dropdown-item" href="#">Report</a>
-                                    <a class="dropdown-item" href="#">Mark as spam</a>
-                                </div>
-                            </div>
+                            <h5><a href="forum-post.html">Elizabeth</a></h5>
+                            <span>June 23, 2017</span>
                         </div>
                     </div>
-                    <p th:text="${feed.text}"></p>
-                    <div class="post-thumbnail">
-                        <img src="img/profile/profile-1.jpg" alt="">
-                    </div>
-                    <div class="post-footer">
-                        <a href="#"><i class="fa fa-reply"></i> 34 shares</a>
-                        <a href="#"><i class="fa fa-comment-o"></i> 50 comments</a>
-                        <a href="#" th:value="${feed.likes}"><i class="fa fa-heart-o"></i> 523 likes</a>
-                    </div>
                 </div>
-
-                <div class="text-center"><a href="games.html"
-                                            class="btn btn-primary btn-shadow btn-rounded btn-effect btn-lg m-b-20">Show
-                    More</a></div>
+            </div>
+            
+            <div class="forum-footer">
+                <div></div>
+                <div>Topic</div>
+                <div>Replies</div>
+                <div>Views</div>
+                <div>Most Recent</div>
             </div>
         </div>
+        <nav aria-label="Page navigation">
+            <ul class="pagination">
+                <li class="page-item disabled"><a class="page-link" href="#" aria-label="Previous"><span
+                        aria-hidden="true"><i class="fa fa-angle-left"></i></span></a></li>
+                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">4</a></li>
+                <li class="page-item"><a class="page-link" href="#">5</a></li>
+                <li class="separate"><span>...</span></li>
+                <li class="page-item"><a class="page-link" href="#">25</a></li>
+                <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true"><i
+                        class="fa fa-angle-right"></i></span></a></li>
+            </ul>
+        </nav>
     </div>
 </section>
 <!-- /main -->
@@ -228,19 +226,6 @@
 <script src="plugins/jquery/jquery-3.2.1.min.js"></script>
 <script src="plugins/popper/popper.min.js"></script>
 <script src="plugins/bootstrap/js/bootstrap.min.js"></script>
-
-<!-- plugins js -->
-<script src="plugins/sticky/jquery.sticky.js"></script>
-<script src="plugins/lightbox/lightbox.js"></script>
-<script>
-    (function ($) {
-        "use strict";
-        // lightbox
-        $('[data-lightbox]').lightbox({
-            disqus: 'gameforestyakuzieu'
-        });
-    })(jQuery);
-</script>
 
 <!-- theme js -->
 <script src="js/theme.min.js"></script>

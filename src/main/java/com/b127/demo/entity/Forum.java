@@ -19,6 +19,9 @@ public class Forum {
 	
 	@Column
 	private String title;
+	
+	@Column
+	private int views;
 
 	public int getId() {
 		return id;
@@ -28,14 +31,20 @@ public class Forum {
 		this.id = id;
 	}
 
-	
-
 	public String getTitle() {
 		return title;
 	}
 
 	public void setTitle(String title) {
 		this.title = title;
+	}
+	
+	public int getViews() {
+		return views;
+	}
+	
+	public void setViews(int views) {
+		this.views = views;
 	}
 	
 	
